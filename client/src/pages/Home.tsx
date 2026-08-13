@@ -283,7 +283,7 @@ export default function Home() {
           </div>
           <div className="order-gallery">
             {filteredOrders.map((order, index) => (
-              <article className={`order-card ${index % 2 === 1 ? "order-card--reverse" : ""} reveal reveal--delay-${(index % 3) + 1}`} key={order.title}>
+              <article className={`order-card ${index % 2 === 1 ? "order-card--reverse" : ""} reveal reveal--delay-${(index % 3) + 1}`} key={`${order.category}-${index}`}>
                 <div className="order-card__image-wrap">
                   <div className={`order-card__image-crop ${order.crop === "clean" ? "order-card__image-crop--clean" : "order-card__image-crop--left"}`}>
                     <img src={order.image} alt={order.alt} className="order-card__image" />

@@ -21,6 +21,12 @@
 - [x] Keep the split-gallery images compact and proportionate at desktop, tablet, and mobile widths.
 - [x] Validate the updated gallery and save the revision.
 
+## Bug Fix
+
+- [x] Replace the duplicate gallery key with a stable unique key.
+- [x] Run type/build checks and verify the React warning is gone.
+- [x] Save and deliver the bug-fix checkpoint.
+
 ## Verified Instagram Findings
 
 - The public profile is @the_veloura77 / @VeLoura with 65 posts, 53 followers, and a bio centered on customized, premium, memorable gifting for birthdays, anniversaries, and more.

@@ -14,6 +14,13 @@
 - [x] Prepare 6–7 authentic post descriptions with occasion labels and no invented customer claims.
 - [x] Validate the new gallery at desktop and mobile widths, then save the revision.
 
+## Supplied Caption Revision
+
+- [x] Stage the newly supplied six post images for the gallery.
+- [x] Replace the gallery copy with the exact user-provided captions.
+- [x] Keep the split-gallery images compact and proportionate at desktop, tablet, and mobile widths.
+- [x] Validate the updated gallery and save the revision.
+
 ## Verified Instagram Findings
 
 - The public profile is @the_veloura77 / @VeLoura with 65 posts, 53 followers, and a bio centered on customized, premium, memorable gifting for birthdays, anniversaries, and more.

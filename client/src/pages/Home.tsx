@@ -60,66 +60,61 @@ const collections = [
 const orderGallery = [
   {
     category: "Snack baskets",
-    title: "The gift everyone secretly wants.",
-    description: "Looking for the perfect customized gift? Our personalized snack basket is packed with delicious chocolates, favorite snacks, a cute teddy, and thoughtful details that make every surprise unforgettable.",
-    image: "/manus-storage/veloura-snack-basket-clean_c0e7db58.png",
-    alt: "Pink snack basket with a teddy bear and chocolates",
+    title: "The only basket nobody wants to share.",
+    caption: `The only basket nobody wants to share. 😍
+
+Packed with all their favorite snacks and a whole lot of love! 🎁✨
+Whether it's a birthday, thank you gift, surprise, or just because...you can never go wrong with a customized snack basket.
+Tag someone who would finish this basket in one day. 👀👇`,
+    image: "/manus-storage/veloura-post-1-snacks_fb76c826.png",
+    alt: "Customized snack basket packed with chocolates and favorite snacks",
     crop: "clean",
-    perfectFor: ["Birthdays", "Anniversaries", "Congratulations", "Thank you", "Just because", "Graduation"],
   },
   {
-    category: "Birthday",
-    title: "A birthday worth remembering.",
-    description: "A colorful birthday basket with delicious chocolates, favorite snacks, a personal note, and the little details that make the celebration feel entirely theirs.",
-    image: "/manus-storage/veloura-birthday-basket_9e64508e.png",
-    alt: "Colorful birthday snack basket with candles and gift notes",
-    crop: "left",
-    perfectFor: ["Birthdays", "Best friends", "Milestones"],
-  },
-  {
-    category: "Surprise",
-    title: "Packed around their favorites.",
-    description: "Thoughtful treats, playful color, and a hand-finished arrangement built around the snacks they reach for first.",
-    image: "/manus-storage/veloura-snack-basket-color_5e39f782.png",
-    alt: "Colorful customized snack basket",
-    crop: "left",
-    perfectFor: ["Just because", "Congratulations", "Sweet surprises"],
+    category: "Luxury setups",
+    title: "Setting new standards for birthday surprises!",
+    caption: `Setting new standards for birthday surprises! 🥀✨ Nothing says luxury quite like a dark aesthetic setup...black heart balloons, a customized bouquet of red and white roses, an artisan gift hamper, and a custom cake from layers bakery shop.
+
+If you want to plan an unforgettable birthday aesthetic or luxury surprise gift setup, save this post for your next big celebration!`,
+    image: "/manus-storage/veloura-post-2-luxury-setup_b0b6a33a.png",
+    alt: "Dark birthday surprise setup with roses, gift hamper, balloons, and cake",
+    crop: "clean",
   },
   {
     category: "Snack baskets",
-    title: "Beautifully packed, ready to surprise.",
-    description: "A ribboned hamper where every layer is chosen for the reveal — from the favorite treats to the final note tucked inside.",
-    image: "/manus-storage/veloura-snack-basket-ribbon_2cf3f896.png",
-    alt: "Ribbon-wrapped snack basket with colorful treats",
-    crop: "left",
-    perfectFor: ["Anniversaries", "Thank you", "Special occasions"],
+    title: "The gift everyone secretly wants is right here!",
+    caption: `The gift everyone secretly wants is right here! 🎁✨
+From premium chocolates 🍫 and favorite snacks 🍟 to a beautifully packed customized hamper..every detail is made to create unforgettable moments. 💛`,
+    image: "/manus-storage/veloura-post-3-snack-basket_bc61f6ba.png",
+    alt: "Premium chocolates and favorite snacks in a customized hamper",
+    crop: "clean",
   },
   {
-    category: "Birthday",
-    title: "A little celebration in a basket.",
-    description: "Personal notes, favorite snacks, and bright blue ribbons come together in a birthday gift that feels playful, personal, and full of heart.",
-    image: "/manus-storage/veloura-birthday-setup_199874b3.png",
-    alt: "Birthday gift basket with handwritten cards and blue ribbons",
-    crop: "left",
-    perfectFor: ["Birthdays", "Graduation", "New beginnings"],
+    category: "Birthday gifts",
+    title: "POV: You just found the perfect birthday surprise!",
+    caption: `🚨 POV: You just found the perfect birthday surprise! 🎁💜
+A customized gift basket filled with chocolates, snacks, heartfelt notes, and a stylish handbag—because the best gifts create unforgettable memories. ✨`,
+    image: "/manus-storage/veloura-post-4-handbag_cbf24e35.png",
+    alt: "Customized birthday gift basket with chocolates, notes, and handbag",
+    crop: "clean",
   },
   {
-    category: "Surprise",
-    title: "The details do the talking.",
-    description: "A customized hamper made to say what a quick message cannot, with thoughtful treats and a presentation they will want to keep looking at.",
-    image: "/manus-storage/veloura-gift-basket_d9615e18.png",
-    alt: "Gold-ribbon gift basket with snacks and a birthday card",
-    crop: "left",
-    perfectFor: ["Thank you", "Congratulations", "Special occasions"],
+    category: "Birthday gifts",
+    title: "POV: You just found the perfect birthday surprise!",
+    caption: `🚨 POV: You just found the perfect birthday surprise! 🎁💜
+A customized gift basket filled with chocolates, snacks, heartfelt notes, and a stylish handbag—because the best gifts create unforgettable memories. ✨`,
+    image: "/manus-storage/veloura-post-5-notes_b728f59a.png",
+    alt: "Birthday basket with chocolates, heartfelt notes, and a handbag",
+    crop: "clean",
   },
   {
-    category: "Snack baskets",
-    title: "A little softness, a lot of joy.",
-    description: "Sweet treats, a cuddly teddy, and a basket styled around the kind of comfort that makes someone feel remembered.",
-    image: "/manus-storage/veloura-snack-basket-pink_4442c60d.png",
-    alt: "Pink snack basket gift with a teddy bear",
-    crop: "left",
-    perfectFor: ["Birthdays", "Anniversaries", "Just because"],
+    category: "Birthday gifts",
+    title: "STOP SCROLLING! This might be the most thoughtful birthday gift you'll see today!",
+    caption: `🚨 STOP SCROLLING! This might be the most thoughtful birthday gift you'll see today! 🎁💙
+Packed with chocolates, snacks, drinks & lots of love...because every birthday deserves something unforgettable. ✨`,
+    image: "/manus-storage/veloura-post-6-blue-birthday_324914b3.png",
+    alt: "Blue-ribbon birthday basket packed with chocolates, snacks, drinks, and notes",
+    crop: "clean",
   },
 ];
 
@@ -298,8 +293,7 @@ export default function Home() {
                 <div className="order-card__content">
                   <p className="order-card__kicker">The Veloura edit</p>
                   <h3>{order.title}</h3>
-                  <p className="order-card__description">{order.description}</p>
-                  <div className="order-card__perfect"><span>Perfect for</span><div>{order.perfectFor.map((occasion) => <span key={occasion}>{occasion}</span>)}</div></div>
+                  <p className="order-card__description">{order.caption}</p>
                   <a href={instagramUrl} target="_blank" rel="noreferrer" className="card-link">Create this feeling <ArrowUpRight size={16} /></a>
                 </div>
               </article>

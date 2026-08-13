@@ -1,3 +1,5 @@
+/* The Veloura style: quiet-luxury editorial gifting, warm ivory surfaces, Veloura Teal accents, and tactile serif-led hierarchy. */
+
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";

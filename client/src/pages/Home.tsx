@@ -1,25 +1,235 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+/* The Veloura style: asymmetric boutique lookbook composition, warm ivory negative space, editorial serif moments, and calm tactile interactions. */
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
- */
+import { useState } from "react";
+import {
+  ArrowDownRight,
+  ArrowUpRight,
+  BriefcaseBusiness,
+  Check,
+  Gift,
+  Heart,
+  Instagram,
+  Menu,
+  MessageCircle,
+  Sparkles,
+  X,
+} from "lucide-react";
+
+const instagramUrl = "https://www.instagram.com/the_veloura77/";
+const whatsappUrl =
+  "https://wa.me/?text=Hi%20The%20Veloura%2C%20I%27d%20love%20to%20create%20a%20gift%20with%20you.";
+
+function RibbonMark({ className = "" }: { className?: string }) {
+  return (
+    <span className={`ribbon-mark ${className}`} aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24.8 5.4C19.5 1.8 10.4 3.5 8.9 9.3c-1.2 4.7 3 8.3 7.5 6.3 3.2-1.4 4.5-5.7 1.7-7.8-3-2.3-8.7-.2-10.5 4.2-1.9 4.6.9 10.3 5.8 11.1 4.3.7 8.6-2 10.1-6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+        <path d="M21.6 18.6c2.7 2.3 4.6 4 6 7.7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+      </svg>
+    </span>
+  );
+}
+
+const collections = [
+  {
+    label: "01 / Celebrate",
+    title: "Birthday, made personal.",
+    description: "Bright little details, wrapped around the person who makes life sweeter.",
+    image: "/manus-storage/veloura-birthday_39b99753.jpg",
+    alt: "A blush and ivory birthday gift arrangement",
+    accent: "blush",
+  },
+  {
+    label: "02 / Remember",
+    title: "Anniversaries with a little more feeling.",
+    description: "Romantic, considered, and finished with the kind of detail they keep.",
+    image: "/manus-storage/veloura-romance_129204c5.jpg",
+    alt: "A romantic anniversary gift box with a ribbon",
+    accent: "teal",
+  },
+  {
+    label: "03 / Appreciate",
+    title: "A thoughtful thank-you.",
+    description: "Quietly elevated gift sets for teams, clients, and the people behind the work.",
+    image: "/manus-storage/veloura-corporate_514cf6a7.jpg",
+    alt: "A refined corporate appreciation gift set",
+    accent: "gold",
+  },
+];
+
+function ContactButton({ type = "instagram", compact = false }: { type?: "instagram" | "whatsapp"; compact?: boolean }) {
+  const isInstagram = type === "instagram";
+  return (
+    <a
+      className={`contact-button ${compact ? "contact-button--compact" : ""} ${isInstagram ? "contact-button--dark" : "contact-button--light"}`}
+      href={isInstagram ? instagramUrl : whatsappUrl}
+      target="_blank"
+      rel="noreferrer"
+    >
+      {isInstagram ? <Instagram size={compact ? 15 : 17} /> : <MessageCircle size={compact ? 15 : 17} />}
+      <span>{isInstagram ? "Message on Instagram" : "Chat on WhatsApp"}</span>
+      <ArrowUpRight className="contact-button__arrow" size={compact ? 15 : 17} />
+    </a>
+  );
+}
+
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+    <div className="site-shell">
+      <div className="topline">
+        <p>Customized gifting, wrapped with love</p>
+        <a href={instagramUrl} target="_blank" rel="noreferrer">
+          @the_veloura77 <ArrowUpRight size={13} />
+        </a>
+      </div>
+
+      <header className="site-header">
+        <a className="brand-lockup" href="#top" aria-label="The Veloura home">
+          <RibbonMark className="ribbon-mark--header" />
+          <span className="brand-lockup__name">Ve<span>L</span>oura</span>
+          <span className="brand-lockup__descriptor">gift atelier</span>
+        </a>
+
+        <nav className={`site-nav ${menuOpen ? "site-nav--open" : ""}`} aria-label="Main navigation">
+          <a href="#collections" onClick={closeMenu}>Collections</a>
+          <a href="#process" onClick={closeMenu}>Our process</a>
+          <a href="#story" onClick={closeMenu}>The Veloura story</a>
+          <div className="site-nav__mobile-contact">
+            <ContactButton compact type="instagram" />
+          </div>
+        </nav>
+
+        <div className="header-actions">
+          <ContactButton compact type="instagram" />
+          <button className="menu-toggle" type="button" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </header>
+
+      <main id="top">
+        <section className="hero-section">
+          <div className="hero-copy">
+            <p className="eyebrow"><Sparkles size={14} /> Curated for the moment</p>
+            <h1>Make the moment <em>look like them.</em></h1>
+            <p className="hero-copy__body">Personalized gifts with a little more feeling. Thoughtfully curated, beautifully wrapped, and delivered with care.</p>
+            <div className="hero-actions">
+              <ContactButton type="instagram" />
+              <a className="text-link" href="#collections">Explore the edit <ArrowDownRight size={18} /></a>
+            </div>
+            <div className="hero-note">
+              <span className="hero-note__line" />
+              <p>For birthdays, anniversaries<br />and every beautiful in-between.</p>
+            </div>
+          </div>
+          <div className="hero-visual">
+            <div className="hero-visual__frame">
+              <img src="/manus-storage/veloura-hero_b45c66e8.png" alt="An ivory gift box with a champagne ribbon and soft florals" />
+            </div>
+            <div className="hero-stamp"><RibbonMark className="ribbon-mark--stamp" /><span>Made<br />memorable</span></div>
+            <p className="hero-visual__caption">01 — The Veloura edit</p>
+          </div>
+        </section>
+
+        <section className="intro-band" aria-label="Brand statement">
+          <div className="intro-band__symbol"><RibbonMark className="ribbon-mark--section" /></div>
+          <p>We believe the best gifts are not just opened — <em>they are remembered.</em></p>
+          <span className="intro-band__rule" />
+        </section>
+
+        <section className="collections-section section-shell" id="collections">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">The occasion edit</p>
+              <h2>Choose a feeling.<br /><em>We’ll wrap the rest.</em></h2>
+            </div>
+            <p className="section-heading__aside">From one-of-one surprises to thoughtful sets, every Veloura gift begins with the person it is for.</p>
+          </div>
+
+          <div className="collection-list">
+            {collections.map((collection) => (
+              <article className={`collection-card collection-card--${collection.accent}`} key={collection.label}>
+                <div className="collection-card__image-wrap">
+                  <img src={collection.image} alt={collection.alt} className="collection-card__image" />
+                  <span className="collection-card__index">{collection.label}</span>
+                </div>
+                <div className="collection-card__content">
+                  <h3>{collection.title}</h3>
+                  <p>{collection.description}</p>
+                  <a href={instagramUrl} target="_blank" rel="noreferrer" className="card-link">Create this feeling <ArrowUpRight size={16} /></a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="process-section" id="process">
+          <div className="section-shell process-layout">
+            <div className="process-intro">
+              <p className="eyebrow eyebrow--light">A little ritual</p>
+              <h2>Tell us who<br /><em>it’s for.</em></h2>
+              <p>We’ll turn your story, style, and occasion into something they cannot wait to open.</p>
+              <ContactButton type="whatsapp" />
+            </div>
+            <div className="process-steps">
+              <div className="process-step">
+                <span className="process-step__number">01</span>
+                <div><Gift size={24} strokeWidth={1.4} /><h3>Share the moment</h3><p>Send us a DM with the occasion, your budget, and a few clues about them.</p></div>
+              </div>
+              <div className="process-step">
+                <span className="process-step__number">02</span>
+                <div><Heart size={24} strokeWidth={1.4} /><h3>We curate the feeling</h3><p>We suggest a thoughtful edit, tailored to their personality and your story.</p></div>
+              </div>
+              <div className="process-step">
+                <span className="process-step__number">03</span>
+                <div><Check size={24} strokeWidth={1.4} /><h3>It arrives, wrapped</h3><p>Your gift is finished with the details that make the reveal feel like a moment.</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="story-section section-shell" id="story">
+          <div className="story-visuals">
+            <div className="story-visuals__main"><img src="/manus-storage/veloura-romance_129204c5.jpg" alt="A romantic gift styled with ribbon and botanicals" /></div>
+            <div className="story-visuals__note"><BriefcaseBusiness size={19} /><span>Private gifting<br />for teams, too.</span></div>
+          </div>
+          <div className="story-copy">
+            <p className="eyebrow">The Veloura story</p>
+            <h2>Small details.<br /><em>Big feeling.</em></h2>
+            <p>Veloura was made for the people who pause before they choose. The ones who notice a favorite color, remember the tiny ritual, and believe the wrapping is part of the gift.</p>
+            <p>Every box is assembled with that same care — a little personal, a little unexpected, and entirely theirs.</p>
+            <a href={instagramUrl} target="_blank" rel="noreferrer" className="text-link">Meet us on Instagram <ArrowUpRight size={18} /></a>
+          </div>
+        </section>
+
+        <section className="closing-section section-shell">
+          <div className="closing-section__ornament"><RibbonMark className="ribbon-mark--closing" /></div>
+          <p className="eyebrow">Your next beautiful reason</p>
+          <h2>Let’s make it<br /><em>unforgettable.</em></h2>
+          <p>Tell us the story behind the gift. We’ll take it from there.</p>
+          <div className="closing-section__actions">
+            <ContactButton type="instagram" />
+            <ContactButton type="whatsapp" />
+          </div>
+        </section>
       </main>
+
+      <footer className="site-footer">
+        <div className="site-footer__top section-shell">
+          <a className="brand-lockup brand-lockup--footer" href="#top">
+            <RibbonMark className="ribbon-mark--header" />
+            <span className="brand-lockup__name">Ve<span>L</span>oura</span>
+            <span className="brand-lockup__descriptor">gift atelier</span>
+          </a>
+          <p>Wrapped with love,<br />delivered with care.</p>
+          <div className="site-footer__links"><a href="#collections">Collections</a><a href="#process">Our process</a><a href={instagramUrl} target="_blank" rel="noreferrer">Instagram <ArrowUpRight size={14} /></a></div>
+        </div>
+        <div className="site-footer__bottom section-shell"><span>© {new Date().getFullYear()} The Veloura</span><span>Customized · Premium · Memorable</span><a href="#top">Back to top ↑</a></div>
+      </footer>
     </div>
   );
 }

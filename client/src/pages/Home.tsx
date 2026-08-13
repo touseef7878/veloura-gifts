@@ -118,7 +118,12 @@ Packed with chocolates, snacks, drinks & lots of love...because every birthday d
   },
 ];
 
-const galleryFilters = ["All", "Birthday", "Snack baskets", "Surprise"];
+const galleryFilters = [
+  { label: "All gifts", value: "All" },
+  { label: "Birthdays", value: "Birthday gifts" },
+  { label: "Snack baskets", value: "Snack baskets" },
+  { label: "Luxury setups", value: "Luxury setups" },
+];
 
 const reviewQuote =
   "10/10 for this amazing basket! The packaging is super cute and presentable. Loved how they added personal notes + snacks + bag all in one basket. It looked premium but still felt personal. Good work with gd packaging thank you so much @VeLoura";
@@ -172,6 +177,16 @@ export default function Home() {
       document.documentElement.classList.remove("motion-ready");
     };
   }, []);
+
+  useEffect(() => {
+    const revealItems = Array.from(document.querySelectorAll<HTMLElement>("#gallery .order-card.reveal"));
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("is-visible")),
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+    );
+    revealItems.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, [activeOccasion]);
 
   const closeMenu = () => setMenuOpen(false);
   const briefUrl = `https://wa.me/?text=${encodeURIComponent(`Hi The Veloura, I would love help creating a ${brief.toLowerCase()}.`)}`;
@@ -278,10 +293,10 @@ export default function Home() {
           </div>
           <div className="occasion-filters" role="tablist" aria-label="Filter gift inspiration by occasion">
             {galleryFilters.map((filter) => (
-              <button key={filter} type="button" role="tab" aria-selected={activeOccasion === filter} className={activeOccasion === filter ? "is-active" : ""} onClick={() => setActiveOccasion(filter)}>{filter}</button>
+              <button key={filter.value} type="button" role="tab" aria-selected={activeOccasion === filter.value} aria-controls="gallery-results" className={activeOccasion === filter.value ? "is-active" : ""} onClick={() => setActiveOccasion(filter.value)}>{filter.label}</button>
             ))}
           </div>
-          <div className="order-gallery">
+          <div className="order-gallery" id="gallery-results" aria-live="polite">
             {filteredOrders.map((order, index) => (
               <article className={`order-card ${index % 2 === 1 ? "order-card--reverse" : ""} reveal reveal--delay-${(index % 3) + 1}`} key={`${order.category}-${index}`}>
                 <div className="order-card__image-wrap">

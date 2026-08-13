@@ -33,6 +33,18 @@
 - [x] Document the current stack, file structure, assets, contact links, and deployment workflow.
 - [x] Validate the commands and save the documentation version.
 
+## Gallery Category Filter
+
+- [x] Confirm the gallery category labels and current filter state.
+- [x] Implement accessible occasion filtering with active-state styling.
+- [x] Validate filtered results and responsive behavior, then save the revision.
+
+## Filter Verification Notes
+
+- The rendered gallery now exposes the controls “All gifts,” “Birthdays,” “Snack baskets,” and “Luxury setups.”
+- Each control uses an accessible tab role, an `aria-selected` active state, and `aria-controls="gallery-results"`.
+- The filtered results container uses `aria-live="polite"` so changes can be announced without disrupting the visitor.
+
 ## Verified Instagram Findings
 
 - The public profile is @the_veloura77 / @VeLoura with 65 posts, 53 followers, and a bio centered on customized, premium, memorable gifting for birthdays, anniversaries, and more.

@@ -70,3 +70,10 @@ Use a distinctive ribbon-loop symbol as the visual mark, paired with a high-cont
 - The ribbon-loop symbol is the primary brand stamp across the header, hero badge, section marker, closing invitation, footer, and favicon.
 - Supporting imagery follows one tactile editorial direction: warm ivory paper, champagne ribbon, soft florals, and occasional Veloura Teal accents.
 - Long ivory sections use packaging-inspired structure — section numbering, hairline rules, small uppercase annotations, and offset compositions — so whitespace feels intentional.
+
+## Verified Content Additions
+
+- The supplied circular VeLoura logo is used in the header, footer, and favicon.
+- The supplied gift-basket and hamper images are presented as a “Real orders, real details” gallery with frontend-only occasion filters.
+- The review section uses one genuine customer message visible in the public “REVIEWS 🔥” highlight. It is quoted with the source label “Customer message shared via Instagram” because no customer name was visible.
+- The page now includes a lightweight gift-brief selector that prepares a WhatsApp message without collecting or storing data.

@@ -1,6 +1,6 @@
 /* The Veloura style: asymmetric boutique lookbook composition, warm ivory negative space, editorial serif moments, and calm tactile interactions. */
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -57,6 +57,56 @@ const collections = [
   },
 ];
 
+const orderGallery = [
+  {
+    category: "Snack baskets",
+    title: "The gift everyone secretly wants.",
+    description: "A custom snack basket packed with their favorites, a little softness, and a lot of care.",
+    image: "/manus-storage/veloura-snack-basket-pink_4442c60d.png",
+    alt: "Pink snack basket with a teddy bear and chocolates",
+  },
+  {
+    category: "Birthday",
+    title: "A birthday worth remembering.",
+    description: "A celebration built around the details that make their day feel entirely theirs.",
+    image: "/manus-storage/veloura-birthday-basket_9e64508e.png",
+    alt: "Colorful birthday snack basket with candles and gift notes",
+  },
+  {
+    category: "Surprise",
+    title: "Packed around their favorites.",
+    description: "Thoughtful treats, playful color, and one very personal reason to smile.",
+    image: "/manus-storage/veloura-snack-basket-color_5e39f782.png",
+    alt: "Colorful customized snack basket",
+  },
+  {
+    category: "Snack baskets",
+    title: "Beautifully packed, ready to surprise.",
+    description: "A ribboned hamper that makes the reveal feel just as good as what is inside.",
+    image: "/manus-storage/veloura-snack-basket-ribbon_2cf3f896.png",
+    alt: "Ribbon-wrapped snack basket with colorful treats",
+  },
+  {
+    category: "Birthday",
+    title: "A little celebration in a basket.",
+    description: "Personal notes, favorite snacks, and the kind of color that belongs to birthdays.",
+    image: "/manus-storage/veloura-birthday-setup_199874b3.png",
+    alt: "Birthday gift basket with handwritten cards and blue ribbons",
+  },
+  {
+    category: "Surprise",
+    title: "The details do the talking.",
+    description: "A customized hamper made to say what a quick message cannot.",
+    image: "/manus-storage/veloura-gift-basket_d9615e18.png",
+    alt: "Gold-ribbon gift basket with snacks and a birthday card",
+  },
+];
+
+const galleryFilters = ["All", "Birthday", "Snack baskets", "Surprise"];
+
+const reviewQuote =
+  "10/10 for this amazing basket! The packaging is super cute and presentable. Loved how they added personal notes + snacks + bag all in one basket. It looked premium but still felt personal. Good work with gd packaging thank you so much @VeLoura";
+
 function ContactButton({ type = "instagram", compact = false }: { type?: "instagram" | "whatsapp"; compact?: boolean }) {
   const isInstagram = type === "instagram";
   return (
@@ -75,11 +125,44 @@ function ContactButton({ type = "instagram", compact = false }: { type?: "instag
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeOccasion, setActiveOccasion] = useState("All");
+  const [brief, setBrief] = useState("Birthday surprise");
+
+  const filteredOrders = useMemo(
+    () => activeOccasion === "All" ? orderGallery : orderGallery.filter((order) => order.category === activeOccasion),
+    [activeOccasion],
+  );
+
+  useEffect(() => {
+    document.documentElement.classList.add("motion-ready");
+    const revealItems = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("is-visible")),
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+    );
+    revealItems.forEach((item) => observer.observe(item));
+
+    const updateScrollProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      document.documentElement.style.setProperty("--scroll-progress", `${progress}%`);
+    };
+    updateScrollProgress();
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", updateScrollProgress);
+      document.documentElement.classList.remove("motion-ready");
+    };
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
+  const briefUrl = `https://wa.me/?text=${encodeURIComponent(`Hi The Veloura, I would love help creating a ${brief.toLowerCase()}.`)}`;
 
   return (
     <div className="site-shell">
+      <div className="scroll-progress" aria-hidden="true" />
       <div className="topline">
         <p>Customized gifting, wrapped with love</p>
         <a href={instagramUrl} target="_blank" rel="noreferrer">
@@ -89,15 +172,17 @@ export default function Home() {
 
       <header className="site-header">
         <a className="brand-lockup" href="#top" aria-label="The Veloura home">
-          <RibbonMark className="ribbon-mark--header" />
+          <img src="/manus-storage/veloura-logo_a1f2b98f.png" alt="The Veloura logo" className="brand-lockup__mark" />
           <span className="brand-lockup__name">Ve<span>L</span>oura</span>
           <span className="brand-lockup__descriptor">gift atelier</span>
         </a>
 
         <nav className={`site-nav ${menuOpen ? "site-nav--open" : ""}`} aria-label="Main navigation">
+          <a href="#gallery" onClick={closeMenu}>The edit</a>
           <a href="#collections" onClick={closeMenu}>Collections</a>
           <a href="#process" onClick={closeMenu}>Our process</a>
           <a href="#story" onClick={closeMenu}>The Veloura story</a>
+          <a href="#reviews" onClick={closeMenu}>Reviews</a>
           <div className="site-nav__mobile-contact">
             <ContactButton compact type="instagram" />
           </div>
@@ -167,6 +252,30 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="gallery-section section-shell reveal" id="gallery">
+          <div className="section-heading gallery-heading">
+            <div>
+              <p className="eyebrow">Real orders, real details</p>
+              <h2>Made for their<br /><em>kind of joy.</em></h2>
+            </div>
+            <p className="section-heading__aside">A closer look at the baskets, hampers, notes, ribbons, and small surprises shared from the Veloura edit.</p>
+          </div>
+          <div className="occasion-filters" role="tablist" aria-label="Filter gift inspiration by occasion">
+            {galleryFilters.map((filter) => (
+              <button key={filter} type="button" role="tab" aria-selected={activeOccasion === filter} className={activeOccasion === filter ? "is-active" : ""} onClick={() => setActiveOccasion(filter)}>{filter}</button>
+            ))}
+          </div>
+          <div className="order-gallery">
+            {filteredOrders.map((order, index) => (
+              <article className={`order-card reveal reveal--delay-${(index % 3) + 1}`} key={order.title}>
+                <div className="order-card__image-wrap"><img src={order.image} alt={order.alt} className="order-card__image" /><span>{order.category}</span></div>
+                <div className="order-card__content"><h3>{order.title}</h3><p>{order.description}</p></div>
+              </article>
+            ))}
+          </div>
+          <a className="text-link gallery-link" href={instagramUrl} target="_blank" rel="noreferrer">See more on Instagram <ArrowUpRight size={18} /></a>
+        </section>
+
         <section className="process-section" id="process">
           <div className="section-shell process-layout">
             <div className="process-intro">
@@ -206,6 +315,34 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="review-section section-shell reveal" id="reviews">
+          <div className="review-copy">
+            <p className="eyebrow">From the REVIEWS highlight</p>
+            <h2>A note that<br /><em>stayed with us.</em></h2>
+            <blockquote>“{reviewQuote}”</blockquote>
+            <p className="review-source">Customer message shared via Instagram<br />No customer name was visible in the source.</p>
+            <a className="text-link" href="https://www.instagram.com/stories/highlights/17884806108459291/" target="_blank" rel="noreferrer">View the review highlight <ArrowUpRight size={18} /></a>
+          </div>
+          <figure className="review-card"><img src="/manus-storage/veloura-review-message_b7b05a3e.png" alt="Customer message praising The Veloura gift basket and packaging" /><figcaption>Shared from the public REVIEWS highlight on Instagram.</figcaption></figure>
+        </section>
+
+        <section className="gift-brief-section section-shell reveal" id="brief">
+          <div className="gift-brief-intro">
+            <p className="eyebrow">Not sure where to start?</p>
+            <h2>Build the brief<br /><em>in three taps.</em></h2>
+            <p>Choose the feeling. We’ll help you turn it into a beautiful, personal order conversation.</p>
+          </div>
+          <div className="brief-panel">
+            <p className="brief-panel__label">I’m looking for a</p>
+            <div className="brief-options">
+              {["Birthday surprise", "Anniversary gesture", "Snack hamper", "Just because"].map((option) => (
+                <button type="button" key={option} className={brief === option ? "is-active" : ""} onClick={() => setBrief(option)}>{option}</button>
+              ))}
+            </div>
+            <div className="brief-result"><span>Start with</span><strong>{brief}</strong><p>Share the occasion, their favorite things, your budget, and when the moment needs to arrive.</p><a href={briefUrl} target="_blank" rel="noreferrer" className="card-link">Send this brief on WhatsApp <ArrowUpRight size={16} /></a></div>
+          </div>
+        </section>
+
         <section className="closing-section section-shell">
           <div className="closing-section__ornament"><RibbonMark className="ribbon-mark--closing" /></div>
           <p className="eyebrow">Your next beautiful reason</p>
@@ -221,7 +358,7 @@ export default function Home() {
       <footer className="site-footer">
         <div className="site-footer__top section-shell">
           <a className="brand-lockup brand-lockup--footer" href="#top">
-            <RibbonMark className="ribbon-mark--header" />
+            <img src="/manus-storage/veloura-logo_a1f2b98f.png" alt="The Veloura logo" className="brand-lockup__mark" />
             <span className="brand-lockup__name">Ve<span>L</span>oura</span>
             <span className="brand-lockup__descriptor">gift atelier</span>
           </a>

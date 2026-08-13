@@ -27,6 +27,12 @@
 - [x] Run type/build checks and verify the React warning is gone.
 - [x] Save and deliver the bug-fix checkpoint.
 
+## Project Documentation
+
+- [x] Replace the scaffold README with a project-specific setup and customization guide.
+- [x] Document the current stack, file structure, assets, contact links, and deployment workflow.
+- [x] Validate the commands and save the documentation version.
+
 ## Verified Instagram Findings
 
 - The public profile is @the_veloura77 / @VeLoura with 65 posts, 53 followers, and a bio centered on customized, premium, memorable gifting for birthdays, anniversaries, and more.

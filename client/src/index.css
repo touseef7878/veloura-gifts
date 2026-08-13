@@ -353,16 +353,26 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .occasion-filters button:hover, .brief-options button:hover { border-color: var(--veloura-gold); color: var(--veloura-teal); }
 .occasion-filters button:active, .brief-options button:active { transform: scale(.97); }
 .occasion-filters button.is-active, .brief-options button.is-active { border-color: var(--veloura-teal); background: var(--veloura-teal); color: #fffaf0; }
-.order-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 18px; }
-.order-card__image-wrap { height: 302px; position: relative; overflow: hidden; background: #e8dfd1; }
-.order-card:nth-child(2) .order-card__image-wrap, .order-card:nth-child(5) .order-card__image-wrap { height: 360px; }
-.order-card:nth-child(3) .order-card__image-wrap, .order-card:nth-child(6) .order-card__image-wrap { height: 326px; }
-.order-card__image { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform 650ms cubic-bezier(.23,1,.32,1), filter 300ms ease-out; }
+.order-gallery { display: grid; gap: 26px; }
+.order-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 386px; background: var(--veloura-ivory); border-top: 1px solid var(--veloura-line); }
+.order-card--reverse .order-card__image-wrap { order: 2; }
+.order-card--reverse .order-card__content { order: 1; }
+.order-card__image-wrap { min-height: 386px; position: relative; overflow: hidden; background: #e8dfd1; }
+.order-card__image-crop { width: 100%; height: 100%; overflow: hidden; }
+.order-card__image { display: block; height: 100%; transition: transform 650ms cubic-bezier(.23,1,.32,1), filter 300ms ease-out; }
+.order-card__image-crop--clean .order-card__image { width: 100%; object-fit: cover; object-position: center; }
+.order-card__image-crop--left .order-card__image { width: 200%; max-width: none; object-fit: cover; object-position: left center; }
 .order-card:hover .order-card__image { transform: scale(1.035); filter: saturate(1.06); }
-.order-card__image-wrap > span { position: absolute; left: 13px; top: 13px; padding: 6px 8px; background: rgba(252,250,245,.9); color: var(--veloura-teal); font-size: 8px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-.order-card__content { padding: 17px 8px 0 0; }
-.order-card__content h3 { margin: 0; color: var(--veloura-teal); font-family: var(--veloura-display); font-size: 28px; font-weight: 500; letter-spacing: -.04em; line-height: .98; }
-.order-card__content p { max-width: 290px; margin: 10px 0 0; color: var(--veloura-muted); font-size: 12px; line-height: 1.65; }
+.order-card__index { position: absolute; left: 19px; top: 18px; padding: 7px 9px; background: rgba(252,250,245,.9); color: var(--veloura-teal); font-size: 8px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.order-card__content { display: flex; flex-direction: column; justify-content: center; padding: 48px clamp(30px, 6vw, 86px); }
+.order-card__kicker { margin: 0 0 23px; color: var(--veloura-gold); font-size: 9px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+.order-card__content h3 { max-width: 360px; margin: 0; color: var(--veloura-teal); font-family: var(--veloura-display); font-size: clamp(38px, 4vw, 58px); font-weight: 500; letter-spacing: -.05em; line-height: .9; }
+.order-card__description { max-width: 420px; margin: 22px 0 0; color: var(--veloura-muted); font-size: 13px; line-height: 1.82; }
+.order-card__perfect { max-width: 420px; margin: 24px 0 26px; padding-top: 16px; border-top: 1px solid var(--veloura-line); }
+.order-card__perfect > span { display: block; margin-bottom: 9px; color: var(--veloura-teal); font-size: 9px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.order-card__perfect > div { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.order-card__perfect > div > span { color: var(--veloura-muted); font-size: 10px; }
+.order-card__content .card-link { margin-top: 0; }
 .gallery-link { margin-top: 50px; }
 
 .review-section { display: grid; grid-template-columns: .95fr 1.05fr; gap: 9vw; align-items: center; padding-top: 145px; padding-bottom: 152px; border-top: 1px solid var(--veloura-line); }
@@ -432,9 +442,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 859px) {
   .gallery-section { padding-top: 0; padding-bottom: 104px; }
   .gallery-heading { margin-bottom: 32px; }
-  .order-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px 14px; }
-  .order-card__image-wrap, .order-card:nth-child(2) .order-card__image-wrap, .order-card:nth-child(3) .order-card__image-wrap, .order-card:nth-child(5) .order-card__image-wrap, .order-card:nth-child(6) .order-card__image-wrap { height: min(52vw, 355px); }
-  .order-card__content h3 { font-size: 25px; }
+  .order-gallery { gap: 18px; }
+  .order-card, .order-card--reverse { grid-template-columns: 1fr; min-height: 0; }
+  .order-card--reverse .order-card__image-wrap { order: 1; }
+  .order-card--reverse .order-card__content { order: 2; }
+  .order-card__image-wrap, .order-card__image-crop { height: min(62vw, 420px); min-height: 0; }
+  .order-card__content { padding: 34px 32px 39px; }
+  .order-card__content h3 { font-size: 43px; }
   .review-section, .gift-brief-section { grid-template-columns: 1fr; gap: 52px; padding-top: 102px; padding-bottom: 107px; }
   .review-card { width: min(100%, 500px); justify-self: center; }
   .gift-brief-section { gap: 35px; }
@@ -468,8 +482,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .site-footer__top > p { justify-self: start; margin-top: 4px; }
   .site-footer__links { gap: 13px; line-height: 1.7; }
   .site-footer__bottom { flex-direction: column; gap: 8px; }
-  .order-gallery { grid-template-columns: 1fr; gap: 48px; }
-  .order-card__image-wrap, .order-card:nth-child(2) .order-card__image-wrap, .order-card:nth-child(3) .order-card__image-wrap, .order-card:nth-child(5) .order-card__image-wrap, .order-card:nth-child(6) .order-card__image-wrap { height: min(116vw, 460px); }
+  .order-gallery { gap: 12px; }
+  .order-card__image-wrap, .order-card__image-crop { height: min(100vw, 460px); }
+  .order-card__content { padding: 30px 22px 36px; }
+  .order-card__content h3 { font-size: 38px; }
   .review-copy blockquote { font-size: 21px; }
   .brief-options { gap: 7px; }
   .brief-options button { font-size: 9px; padding-inline: 10px; }

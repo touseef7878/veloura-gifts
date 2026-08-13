@@ -61,44 +61,65 @@ const orderGallery = [
   {
     category: "Snack baskets",
     title: "The gift everyone secretly wants.",
-    description: "A custom snack basket packed with their favorites, a little softness, and a lot of care.",
-    image: "/manus-storage/veloura-snack-basket-pink_4442c60d.png",
+    description: "Looking for the perfect customized gift? Our personalized snack basket is packed with delicious chocolates, favorite snacks, a cute teddy, and thoughtful details that make every surprise unforgettable.",
+    image: "/manus-storage/veloura-snack-basket-clean_c0e7db58.png",
     alt: "Pink snack basket with a teddy bear and chocolates",
+    crop: "clean",
+    perfectFor: ["Birthdays", "Anniversaries", "Congratulations", "Thank you", "Just because", "Graduation"],
   },
   {
     category: "Birthday",
     title: "A birthday worth remembering.",
-    description: "A celebration built around the details that make their day feel entirely theirs.",
+    description: "A colorful birthday basket with delicious chocolates, favorite snacks, a personal note, and the little details that make the celebration feel entirely theirs.",
     image: "/manus-storage/veloura-birthday-basket_9e64508e.png",
     alt: "Colorful birthday snack basket with candles and gift notes",
+    crop: "left",
+    perfectFor: ["Birthdays", "Best friends", "Milestones"],
   },
   {
     category: "Surprise",
     title: "Packed around their favorites.",
-    description: "Thoughtful treats, playful color, and one very personal reason to smile.",
+    description: "Thoughtful treats, playful color, and a hand-finished arrangement built around the snacks they reach for first.",
     image: "/manus-storage/veloura-snack-basket-color_5e39f782.png",
     alt: "Colorful customized snack basket",
+    crop: "left",
+    perfectFor: ["Just because", "Congratulations", "Sweet surprises"],
   },
   {
     category: "Snack baskets",
     title: "Beautifully packed, ready to surprise.",
-    description: "A ribboned hamper that makes the reveal feel just as good as what is inside.",
+    description: "A ribboned hamper where every layer is chosen for the reveal — from the favorite treats to the final note tucked inside.",
     image: "/manus-storage/veloura-snack-basket-ribbon_2cf3f896.png",
     alt: "Ribbon-wrapped snack basket with colorful treats",
+    crop: "left",
+    perfectFor: ["Anniversaries", "Thank you", "Special occasions"],
   },
   {
     category: "Birthday",
     title: "A little celebration in a basket.",
-    description: "Personal notes, favorite snacks, and the kind of color that belongs to birthdays.",
+    description: "Personal notes, favorite snacks, and bright blue ribbons come together in a birthday gift that feels playful, personal, and full of heart.",
     image: "/manus-storage/veloura-birthday-setup_199874b3.png",
     alt: "Birthday gift basket with handwritten cards and blue ribbons",
+    crop: "left",
+    perfectFor: ["Birthdays", "Graduation", "New beginnings"],
   },
   {
     category: "Surprise",
     title: "The details do the talking.",
-    description: "A customized hamper made to say what a quick message cannot.",
+    description: "A customized hamper made to say what a quick message cannot, with thoughtful treats and a presentation they will want to keep looking at.",
     image: "/manus-storage/veloura-gift-basket_d9615e18.png",
     alt: "Gold-ribbon gift basket with snacks and a birthday card",
+    crop: "left",
+    perfectFor: ["Thank you", "Congratulations", "Special occasions"],
+  },
+  {
+    category: "Snack baskets",
+    title: "A little softness, a lot of joy.",
+    description: "Sweet treats, a cuddly teddy, and a basket styled around the kind of comfort that makes someone feel remembered.",
+    image: "/manus-storage/veloura-snack-basket-pink_4442c60d.png",
+    alt: "Pink snack basket gift with a teddy bear",
+    crop: "left",
+    perfectFor: ["Birthdays", "Anniversaries", "Just because"],
   },
 ];
 
@@ -267,9 +288,20 @@ export default function Home() {
           </div>
           <div className="order-gallery">
             {filteredOrders.map((order, index) => (
-              <article className={`order-card reveal reveal--delay-${(index % 3) + 1}`} key={order.title}>
-                <div className="order-card__image-wrap"><img src={order.image} alt={order.alt} className="order-card__image" /><span>{order.category}</span></div>
-                <div className="order-card__content"><h3>{order.title}</h3><p>{order.description}</p></div>
+              <article className={`order-card ${index % 2 === 1 ? "order-card--reverse" : ""} reveal reveal--delay-${(index % 3) + 1}`} key={order.title}>
+                <div className="order-card__image-wrap">
+                  <div className={`order-card__image-crop ${order.crop === "clean" ? "order-card__image-crop--clean" : "order-card__image-crop--left"}`}>
+                    <img src={order.image} alt={order.alt} className="order-card__image" />
+                  </div>
+                  <span className="order-card__index">{String(index + 1).padStart(2, "0")} / {order.category}</span>
+                </div>
+                <div className="order-card__content">
+                  <p className="order-card__kicker">The Veloura edit</p>
+                  <h3>{order.title}</h3>
+                  <p className="order-card__description">{order.description}</p>
+                  <div className="order-card__perfect"><span>Perfect for</span><div>{order.perfectFor.map((occasion) => <span key={occasion}>{occasion}</span>)}</div></div>
+                  <a href={instagramUrl} target="_blank" rel="noreferrer" className="card-link">Create this feeling <ArrowUpRight size={16} /></a>
+                </div>
               </article>
             ))}
           </div>

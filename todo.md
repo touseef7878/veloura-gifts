@@ -7,6 +7,13 @@
 - [x] Add practical frontend-only gifting features such as a gallery, occasion filter, and sticky contact affordance.
 - [x] Validate responsive layout, motion preferences, navigation, image assets, and contact links.
 
+## Gallery Revision
+
+- [x] Replace the dense screenshot-style gallery cards with split editorial post cards.
+- [x] Use cleanly cropped basket imagery on one side and full descriptive copy on the other.
+- [x] Prepare 6–7 authentic post descriptions with occasion labels and no invented customer claims.
+- [x] Validate the new gallery at desktop and mobile widths, then save the revision.
+
 ## Verified Instagram Findings
 
 - The public profile is @the_veloura77 / @VeLoura with 65 posts, 53 followers, and a bio centered on customized, premium, memorable gifting for birthdays, anniversaries, and more.

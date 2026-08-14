@@ -45,6 +45,13 @@
 - Each control uses an accessible tab role, an `aria-selected` active state, and `aria-controls="gallery-results"`.
 - The filtered results container uses `aria-live="polite"` so changes can be announced without disrupting the visitor.
 
+## Reusable Image Assets
+
+- [x] Audit all image URLs referenced by the frontend.
+- [x] Match each reference to an available source file and package reusable assets.
+- [x] Add an asset manifest and document any generated or external dependency.
+- [x] Validate the package and save the asset revision.
+
 ## Verified Instagram Findings
 
 - The public profile is @the_veloura77 / @VeLoura with 65 posts, 53 followers, and a bio centered on customized, premium, memorable gifting for birthdays, anniversaries, and more.

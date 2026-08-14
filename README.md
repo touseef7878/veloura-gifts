@@ -209,6 +209,8 @@ Use the returned `/manus-storage/...` path exactly in JSX:
 
 Do not reference the temporary local path in deployed code. Do not manually rename a returned storage path because the project lifecycle is attached to the generated path.
 
+For this handoff, the downloadable archive **`veloura-asset-pack.zip`** contains all 12 images currently referenced by the page in `source/`, seven additional staged images in `additional-staged-assets/`, and `VEL0URA_ASSET_MANIFEST.md`, which maps each storage reference to its reusable local filename. The archive is delivered with this project update. A short copy of the mapping is also kept in `ASSET_MANIFEST.md` at the project root.
+
 ## 9. Design system and motion notes
 
 The chosen visual direction is **Quiet-Luxury Gift Atelier**. The page uses warm ivory paper, Veloura Teal, champagne-gold accents, Cormorant Garamond for display type, and Manrope for utility copy. The design intentionally favors asymmetric editorial sections over a conventional centered e-commerce grid.

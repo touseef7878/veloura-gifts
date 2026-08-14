@@ -35,7 +35,7 @@ const collections = [
     label: "01 / Celebrate",
     title: "Birthday, made personal.",
     description: "Bright little details, wrapped around the person who makes life sweeter.",
-    image: "/manus-storage/veloura-birthday_39b99753.jpg",
+    image: "/images/collections/veloura-birthday.jpg",
     alt: "A blush and ivory birthday gift arrangement",
     accent: "blush",
   },
@@ -43,7 +43,7 @@ const collections = [
     label: "02 / Remember",
     title: "Anniversaries with a little more feeling.",
     description: "Romantic, considered, and finished with the kind of detail they keep.",
-    image: "/manus-storage/veloura-romance_129204c5.jpg",
+    image: "/images/collections/veloura-romance.webp",
     alt: "A romantic anniversary gift box with a ribbon",
     accent: "teal",
   },
@@ -51,7 +51,7 @@ const collections = [
     label: "03 / Appreciate",
     title: "A thoughtful thank-you.",
     description: "Quietly elevated gift sets for teams, clients, and the people behind the work.",
-    image: "/manus-storage/veloura-corporate_514cf6a7.jpg",
+    image: "/images/collections/veloura-corporate.jpg",
     alt: "A refined corporate appreciation gift set",
     accent: "gold",
   },
@@ -66,7 +66,7 @@ const orderGallery = [
 Packed with all their favorite snacks and a whole lot of love! 🎁✨
 Whether it's a birthday, thank you gift, surprise, or just because...you can never go wrong with a customized snack basket.
 Tag someone who would finish this basket in one day. 👀👇`,
-    image: "/manus-storage/veloura-post-1-snacks_fb76c826.png",
+    image: "/images/gallery/veloura-post-1-snacks.webp",
     alt: "Customized snack basket packed with chocolates and favorite snacks",
     crop: "clean",
   },
@@ -76,7 +76,7 @@ Tag someone who would finish this basket in one day. 👀👇`,
     caption: `Setting new standards for birthday surprises! 🥀✨ Nothing says luxury quite like a dark aesthetic setup...black heart balloons, a customized bouquet of red and white roses, an artisan gift hamper, and a custom cake from layers bakery shop.
 
 If you want to plan an unforgettable birthday aesthetic or luxury surprise gift setup, save this post for your next big celebration!`,
-    image: "/manus-storage/veloura-post-2-luxury-setup_b0b6a33a.png",
+    image: "/images/gallery/veloura-post-2-luxury-setup.png",
     alt: "Dark birthday surprise setup with roses, gift hamper, balloons, and cake",
     crop: "clean",
   },
@@ -85,7 +85,7 @@ If you want to plan an unforgettable birthday aesthetic or luxury surprise gift 
     title: "The gift everyone secretly wants is right here!",
     caption: `The gift everyone secretly wants is right here! 🎁✨
 From premium chocolates 🍫 and favorite snacks 🍟 to a beautifully packed customized hamper..every detail is made to create unforgettable moments. 💛`,
-    image: "/manus-storage/veloura-post-3-snack-basket_bc61f6ba.png",
+    image: "/images/gallery/veloura-post-3-snack-basket.png",
     alt: "Premium chocolates and favorite snacks in a customized hamper",
     crop: "clean",
   },
@@ -94,7 +94,7 @@ From premium chocolates 🍫 and favorite snacks 🍟 to a beautifully packed cu
     title: "POV: You just found the perfect birthday surprise!",
     caption: `🚨 POV: You just found the perfect birthday surprise! 🎁💜
 A customized gift basket filled with chocolates, snacks, heartfelt notes, and a stylish handbag—because the best gifts create unforgettable memories. ✨`,
-    image: "/manus-storage/veloura-post-4-handbag_cbf24e35.png",
+    image: "/images/gallery/veloura-post-4-handbag.png",
     alt: "Customized birthday gift basket with chocolates, notes, and handbag",
     crop: "clean",
   },
@@ -103,7 +103,7 @@ A customized gift basket filled with chocolates, snacks, heartfelt notes, and a 
     title: "POV: You just found the perfect birthday surprise!",
     caption: `🚨 POV: You just found the perfect birthday surprise! 🎁💜
 A customized gift basket filled with chocolates, snacks, heartfelt notes, and a stylish handbag—because the best gifts create unforgettable memories. ✨`,
-    image: "/manus-storage/veloura-post-5-notes_b728f59a.png",
+    image: "/images/gallery/veloura-post-5-notes.png",
     alt: "Birthday basket with chocolates, heartfelt notes, and a handbag",
     crop: "clean",
   },
@@ -112,7 +112,7 @@ A customized gift basket filled with chocolates, snacks, heartfelt notes, and a 
     title: "STOP SCROLLING! This might be the most thoughtful birthday gift you'll see today!",
     caption: `🚨 STOP SCROLLING! This might be the most thoughtful birthday gift you'll see today! 🎁💙
 Packed with chocolates, snacks, drinks & lots of love...because every birthday deserves something unforgettable. ✨`,
-    image: "/manus-storage/veloura-post-6-blue-birthday_324914b3.png",
+    image: "/images/gallery/veloura-post-6-blue-birthday.webp",
     alt: "Blue-ribbon birthday basket packed with chocolates, snacks, drinks, and notes",
     crop: "clean",
   },
@@ -203,7 +203,7 @@ export default function Home() {
 
       <header className="site-header">
         <a className="brand-lockup" href="#top" aria-label="The Veloura home">
-          <img src="/manus-storage/veloura-logo_a1f2b98f.png" alt="The Veloura logo" className="brand-lockup__mark" />
+          <img src="/images/brand/veloura-logo.png" alt="The Veloura logo" className="brand-lockup__mark" />
           <span className="brand-lockup__name">Ve<span>L</span>oura</span>
           <span className="brand-lockup__descriptor">gift atelier</span>
         </a>
@@ -244,7 +244,7 @@ export default function Home() {
           </div>
           <div className="hero-visual">
             <div className="hero-visual__frame">
-              <img src="/manus-storage/veloura-hero_b45c66e8.png" alt="An ivory gift box with a champagne ribbon and soft florals" />
+              <img src="/images/hero/veloura-hero.webp" alt="An ivory gift box with a champagne ribbon and soft florals" />
             </div>
             <div className="hero-stamp"><RibbonMark className="ribbon-mark--stamp" /><span>Made<br />memorable</span></div>
             <p className="hero-visual__caption">01 — The Veloura edit</p>
@@ -344,7 +344,7 @@ export default function Home() {
 
         <section className="story-section section-shell" id="story">
           <div className="story-visuals">
-            <div className="story-visuals__main"><img src="/manus-storage/veloura-romance_129204c5.jpg" alt="A romantic gift styled with ribbon and botanicals" /></div>
+            <div className="story-visuals__main"><img src="/images/collections/veloura-romance.webp" alt="A romantic gift styled with ribbon and botanicals" /></div>
             <div className="story-visuals__note"><BriefcaseBusiness size={19} /><span>Private gifting<br />for teams, too.</span></div>
           </div>
           <div className="story-copy">
@@ -364,7 +364,7 @@ export default function Home() {
             <p className="review-source">Customer message shared via Instagram<br />No customer name was visible in the source.</p>
             <a className="text-link" href="https://www.instagram.com/stories/highlights/17884806108459291/" target="_blank" rel="noreferrer">View the review highlight <ArrowUpRight size={18} /></a>
           </div>
-          <figure className="review-card"><img src="/manus-storage/veloura-review-message_b7b05a3e.png" alt="Customer message praising The Veloura gift basket and packaging" /><figcaption>Shared from the public REVIEWS highlight on Instagram.</figcaption></figure>
+          <figure className="review-card"><img src="/images/reviews/veloura-review-message.png" alt="Customer message praising The Veloura gift basket and packaging" /><figcaption>Shared from the public REVIEWS highlight on Instagram.</figcaption></figure>
         </section>
 
         <section className="gift-brief-section section-shell reveal" id="brief">
@@ -399,7 +399,7 @@ export default function Home() {
       <footer className="site-footer">
         <div className="site-footer__top section-shell">
           <a className="brand-lockup brand-lockup--footer" href="#top">
-            <img src="/manus-storage/veloura-logo_a1f2b98f.png" alt="The Veloura logo" className="brand-lockup__mark" />
+            <img src="/images/brand/veloura-logo.png" alt="The Veloura logo" className="brand-lockup__mark" />
             <span className="brand-lockup__name">Ve<span>L</span>oura</span>
             <span className="brand-lockup__descriptor">gift atelier</span>
           </a>

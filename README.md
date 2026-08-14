@@ -182,34 +182,39 @@ Add a second paragraph when the original post contains one.`,
 
 The card key is intentionally based on the category and array index so repeated post titles can render safely. If the gallery becomes data-driven later, replace that with a stable unique post ID.
 
-## 8. Image and media workflow
+## 8. Image, icon, and font workflow
 
-Do not place large images, videos, or audio files in `client/public/` or `client/src/assets/`. The static deployment workflow expects media to live outside the project and be uploaded to project storage.
-
-Keep the original local file in:
+All visual assets required by the website are now stored inside the repository so the project can be downloaded, cloned, and served without access to the Manus sandbox or a temporary asset host. The local asset structure is:
 
 ```text
-/home/ubuntu/webdev-static-assets/
+client/public/
+├── favicon/
+│   ├── apple-touch-icon.png
+│   ├── favicon.svg
+│   └── veloura-logo.png
+├── fonts/
+│   ├── cormorant-*.ttf
+│   └── manrope-*.ttf
+└── images/
+    ├── additional/
+    ├── brand/
+    ├── collections/
+    ├── gallery/
+    ├── hero/
+    └── reviews/
 ```
 
-Upload it with:
-
-```bash
-manus-upload-file --webdev /home/ubuntu/webdev-static-assets/your-image.png
-```
-
-Use the returned `/manus-storage/...` path exactly in JSX:
+In JSX and CSS, reference these assets with root-local paths such as:
 
 ```tsx
-<img
-  src="/manus-storage/your-image_a1b2c3d4.png"
-  alt="Description of the image"
-/>
+<img src="/images/gallery/veloura-post-1-snacks.png" alt="Customized snack basket" />
 ```
 
-Do not reference the temporary local path in deployed code. Do not manually rename a returned storage path because the project lifecycle is attached to the generated path.
+```css
+src: url("/fonts/manrope-400.ttf") format("truetype");
+```
 
-For this handoff, the downloadable archive **`veloura-asset-pack.zip`** contains all 12 images currently referenced by the page in `source/`, seven additional staged images in `additional-staged-assets/`, and `VEL0URA_ASSET_MANIFEST.md`, which maps each storage reference to its reusable local filename. The archive is delivered with this project update. A short copy of the mapping is also kept in `ASSET_MANIFEST.md` at the project root.
+The downloadable `veloura-asset-pack.zip` from the previous handoff remains useful as an original-source backup, but the website no longer depends on it at runtime. The project’s `ASSET_MANIFEST.md` lists every current local path and its purpose. When adding a new image, copy it into the appropriate `client/public/images/` subfolder and reference it with a local `/images/...` path. Do not use Manus storage paths, sandbox paths, placeholder services, or external image URLs in application code.
 
 ## 9. Design system and motion notes
 
@@ -234,7 +239,7 @@ For a normal code handoff, commit the source files, `package.json`, `pnpm-lock.y
 | Symptom | Likely cause | What to try |
 | --- | --- | --- |
 | `pnpm` is not found | pnpm is not installed or is not on `PATH` | Enable/install pnpm 10, then rerun `pnpm install` |
-| Images are missing | A local path was used instead of a storage path | Upload the asset and use the returned `/manus-storage/...` URL |
+| Images are missing | A local path is incorrect or the file is outside `client/public/` | Confirm the file exists under `client/public/` and use its root-local `/images/...` or `/favicon/...` path |
 | The page is blank | A TypeScript or runtime error exists | Run `pnpm check`, inspect the browser console, and confirm the route is `/` |
 | The page renders old code | Vite cache or stale development server | Stop and restart `pnpm dev`, then hard-refresh the browser |
 | WhatsApp opens the wrong place | The placeholder link is still configured | Replace `whatsappUrl` and `briefUrl` with the real international number |
@@ -243,7 +248,7 @@ For a normal code handoff, commit the source files, `package.json`, `pnpm-lock.y
 
 ## 13. Final handoff checklist
 
-Before publishing a customized version, replace the placeholder WhatsApp number, confirm the Instagram URL, check that every supplied image has permission to be displayed, run `pnpm check && pnpm build`, and test the page at both mobile and desktop widths. Review the live hero, gallery filters, review source link, guided brief, and all contact buttons once with the business owner.
+Before publishing a customized version, replace the placeholder WhatsApp number, confirm the Instagram URL, check that every supplied image has permission to be displayed, run `pnpm check && pnpm build`, and test the page at both mobile and desktop widths. Review the live hero, gallery filters, review source link, guided brief, and all contact buttons once with the business owner. For an offline handoff, also run the repository asset audit described in `ASSET_MANIFEST.md` and confirm there are no external image, icon, favicon, or font URLs in `client/`.
 
 ## References
 

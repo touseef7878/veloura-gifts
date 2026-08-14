@@ -1,20 +1,24 @@
-# The Veloura — Asset Manifest
+# The Veloura — Local Asset Manifest
 
-The frontend uses project-managed `/manus-storage/...` image paths. The downloadable `veloura-asset-pack.zip` contains the local source files for every image currently referenced by `client/src/pages/Home.tsx`.
+Every visual asset used by the application is stored inside `client/public/`. The frontend references root-local paths, so the site does not require Manus storage, sandbox files, placeholder services, or external image URLs at runtime.
 
-| Code storage reference | Local source file | Usage |
+| Code path | Local file | Usage |
 | --- | --- | --- |
-| `veloura-hero_b45c66e8.png` | `source/veloura-hero.png` | Hero gift-box visual |
-| `veloura-logo_a1f2b98f.png` | `source/veloura-logo.png` | Header and footer mark |
-| `veloura-birthday_39b99753.jpg` | `source/veloura-birthday.jpg` | Birthday collection |
-| `veloura-romance_129204c5.jpg` | `source/veloura-romance.jpg` | Romance collection/story visual |
-| `veloura-corporate_514cf6a7.jpg` | `source/veloura-corporate.jpg` | Corporate gifting collection |
-| `veloura-post-1-snacks_fb76c826.png` | `source/veloura-post-1-snacks.png` | Snack basket post 1 |
-| `veloura-post-2-luxury-setup_b0b6a33a.png` | `source/veloura-post-2-luxury-setup.png` | Luxury setup post 2 |
-| `veloura-post-3-snack-basket_bc61f6ba.png` | `source/veloura-post-3-snack-basket.png` | Snack hamper post 3 |
-| `veloura-post-4-handbag_cbf24e35.png` | `source/veloura-post-4-handbag.png` | Handbag birthday post 4 |
-| `veloura-post-5-notes_b728f59a.png` | `source/veloura-post-5-notes.png` | Notes birthday post 5 |
-| `veloura-post-6-blue-birthday_324914b3.png` | `source/veloura-post-6-blue-birthday.png` | Blue birthday post 6 |
-| `veloura-review-message_b7b05a3e.png` | `source/veloura-review-message.png` | Customer review evidence |
+| `/images/hero/veloura-hero.webp` | `client/public/images/hero/veloura-hero.webp` | Hero gift-box visual |
+| `/images/brand/veloura-logo.png` | `client/public/images/brand/veloura-logo.png` | Header and footer mark |
+| `/images/collections/veloura-birthday.jpg` | `client/public/images/collections/veloura-birthday.jpg` | Birthday collection |
+| `/images/collections/veloura-romance.webp` | `client/public/images/collections/veloura-romance.webp` | Romance collection/story visual |
+| `/images/collections/veloura-corporate.jpg` | `client/public/images/collections/veloura-corporate.jpg` | Corporate gifting collection |
+| `/images/gallery/veloura-post-1-snacks.webp` | `client/public/images/gallery/veloura-post-1-snacks.webp` | Snack basket post 1 |
+| `/images/gallery/veloura-post-2-luxury-setup.png` | `client/public/images/gallery/veloura-post-2-luxury-setup.png` | Luxury setup post 2 |
+| `/images/gallery/veloura-post-3-snack-basket.png` | `client/public/images/gallery/veloura-post-3-snack-basket.png` | Snack hamper post 3 |
+| `/images/gallery/veloura-post-4-handbag.png` | `client/public/images/gallery/veloura-post-4-handbag.png` | Handbag birthday post 4 |
+| `/images/gallery/veloura-post-5-notes.png` | `client/public/images/gallery/veloura-post-5-notes.png` | Notes birthday post 5 |
+| `/images/gallery/veloura-post-6-blue-birthday.webp` | `client/public/images/gallery/veloura-post-6-blue-birthday.webp` | Blue birthday post 6 |
+| `/images/reviews/veloura-review-message.png` | `client/public/images/reviews/veloura-review-message.png` | Customer review evidence |
+| `/favicon/favicon.svg` | `client/public/favicon/favicon.svg` | Browser SVG favicon |
+| `/favicon/veloura-logo.png` | `client/public/favicon/veloura-logo.png` | PNG fallback favicon |
+| `/favicon/apple-touch-icon.png` | `client/public/favicon/apple-touch-icon.png` | Apple touch icon |
+| `/site.webmanifest` | `client/public/site.webmanifest` | Local PWA icon metadata |
 
-Large media stays outside the source tree for deployment reliability. To reuse an image in another Manus WebDev project, upload it with `manus-upload-file --webdev /path/to/image.png`, then place the returned `/manus-storage/...` path in JSX.
+The `client/public/images/additional/` folder contains staged images from earlier iterations that are not currently rendered but are kept locally for future reuse. The `client/public/fonts/` folder contains all Cormorant Garamond and Manrope font files referenced by `client/src/index.css`.

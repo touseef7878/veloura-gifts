@@ -52,6 +52,19 @@
 - [x] Add an asset manifest and document any generated or external dependency.
 - [x] Validate the package and save the asset revision.
 
+## Self-Contained Asset Audit
+
+- [x] Audit all image, icon, favicon, CSS, HTML, manifest, and metadata asset references.
+- [x] Copy every visual asset into project-local public folders and update references.
+- [x] Verify no Manus, sandbox, placeholder, or temporary visual URL remains in the codebase.
+- [x] Validate offline path resolution, production rendering, and the final asset change report.
+
+## Offline Compression Workaround
+
+- [x] Compress oversized local images below the checkpoint threshold while keeping their existing filenames and paths.
+- [x] Re-run source, build, served-path, and visual checks after compression.
+- [x] Retry the checkpoint and document any remaining asset limitations.
+
 ## Verified Instagram Findings
 
 - The public profile is @the_veloura77 / @VeLoura with 65 posts, 53 followers, and a bio centered on customized, premium, memorable gifting for birthdays, anniversaries, and more.

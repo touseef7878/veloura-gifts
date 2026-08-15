@@ -17,7 +17,7 @@ import {
 
 const instagramUrl = "https://www.instagram.com/the_veloura77/";
 const whatsappUrl =
-  "https://wa.me/?text=Hi%20The%20Veloura%2C%20I%27d%20love%20to%20create%20a%20gift%20with%20you.";
+  "https://wa.me/923264302479?text=Hi%20The%20Veloura%2C%20I%27d%20love%20to%20create%20a%20gift%20with%20you.";
 
 function RibbonMark({ className = "" }: { className?: string }) {
   return (
@@ -189,7 +189,7 @@ export default function Home() {
   }, [activeOccasion]);
 
   const closeMenu = () => setMenuOpen(false);
-  const briefUrl = `https://wa.me/?text=${encodeURIComponent(`Hi The Veloura, I would love help creating a ${brief.toLowerCase()}.`)}`;
+  const briefUrl = `https://wa.me/923264302479?text=${encodeURIComponent(`Hi The Veloura, I would love help creating a ${brief.toLowerCase()}.`)}`;
 
   return (
     <div className="site-shell">
